@@ -6,7 +6,7 @@
         curves x25519
     }
     @v2ray_websocket {
-        path /{$PATH}
+        path /{$WSPATH}
         header Connection Upgrade
         header Upgrade websocket
     }
