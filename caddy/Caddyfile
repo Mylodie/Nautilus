@@ -9,6 +9,8 @@
         header Connection Upgrade
         header Upgrade websocket
     }
-    reverse_proxy @v2ray_websocket v2ray:23333
-    reverse_proxy {$RPDOMAIN}
+    handle /{$WSPATH} {
+        reverse_proxy @v2ray_websocket v2ray:23333
+    }
+    root / /demo.html
 }

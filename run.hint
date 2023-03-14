@@ -1,5 +1,5 @@
-export $DOMAIN=$1
-export $WSPATH=$2
+export DOMAIN=$1
+export WSPATH=$2
 
 modify uuid and path in v2ray/config.json
 

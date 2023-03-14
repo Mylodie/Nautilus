@@ -8,20 +8,6 @@ services:
     volumes:
       - ./v2ray:/etc/v2ray
     entrypoint: v2ray run -config=/etc/v2ray/config.json
-
-  kubo:
-    image: ipfs/kubo
-    container_name: kubo
-    restart: always
-    environment:
-      - IPFS_PROFILE=lowpower
-    volumes:
-      - ./kubo/ipfs:/data/ipfs
-      - ./kubo/export:/export
-    ports:
-      - 4001:4001
-      - 127.0.0.1:5001:5001
-      - 127.0.0.1:8080:8080
   
   caddy:
     image: caddy:2.6-alpine
@@ -35,4 +21,5 @@ services:
       - 443:443
     volumes:
       - ./caddy/Caddyfile:/Caddyfile:ro
+      - ./caddy/demo.html:/demo.html
     entrypoint: [caddy,run,--config,/Caddyfile]
