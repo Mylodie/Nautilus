@@ -12,5 +12,8 @@
     handle /{$WSPATH} {
         reverse_proxy @v2ray_websocket v2ray:23333
     }
-    root /demo.html
+    handle {
+        root * /demo.html
+        file_server
+    }
 }
