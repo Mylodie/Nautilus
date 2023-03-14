@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Random Planet Facts</title>
+    <meta
+      name="description"
+      content="Get a random fact about plants."
+    />
+    <meta name="author" content="The IPFS Docs team." />
+    <style>
+      body {
+        margin: 15px auto;
+        max-width: 650px;
+        line-height: 1.2;
+        font-family: Optima, Candara, Calibri, Arial, sans-serif;
+        font-size: 2em;
+        color: #fff;
+        background: #444;
+      }
+    </style>
+  </head>
+  <body onload="main()">
+    <h1>Random Planet Facts</h1>
+    <p id="output_p"></p>
+    <script>
+      function main() {
+        const facts = [
+          'Plants form the backbone of the earth’s ecosystem. They provide oxygen and food, which is necessary for survival on earth.',
+          'The first type of aspirin, painkiller and fever reducer came from the tree bark of a willow tree.',
+          'Brazil is named after a tree. The country got its name from Portuguese explorers who called it Terra do Brasil (Land of Brazil) after a red dye-producing tree called pau-brasil that grew there.',
+          'Bamboo is the fastest growing woody plant in the world. It can grow up to 91 cm (35 inches) in a single day.',
+          'The world’s tallest tree is the coast redwood (Sequoia sempervirens), which grows along the Pacific Coast of the United States. It can reach heights of over 110 m (360 feet).',
+          'Some plants can live for thousands of years. The oldest living plant is thought to be a bristlecone pine (Pinus longaeva) in California, which is estimated to be over 5,000 years old.',
+          'Some plants can sense sounds and vibrations. For example, some flowers can increase their nectar production when they hear buzzing bees nearby.',
+          'Some plants can communicate with each other through chemical signals. For example, some trees can warn each other of insect attacks by releasing volatile organic compounds that attract predators or parasites of the insects.',
+          'Some plants can move or react quickly to stimuli. For example, Venus flytraps can snap shut their trap-like leaves when they detect an insect landing on them.',
+          'Some plants have medicinal properties that can help treat various diseases. For example, aloe vera can soothe burns and wounds, mint can relieve digestive problems, and lavender can reduce stress and anxiety.'
+        ]
+        document.querySelector('#output_p').innerHTML =
+          facts[Math.floor(Math.random() * facts.length)]
+      }
+    </script>
+  </body>
+</html>

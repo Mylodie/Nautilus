@@ -13,7 +13,8 @@
         reverse_proxy @v2ray_websocket v2ray:23333
     }
     handle {
-        root * /demo.html
+	    root * /site
+	    rewrite / /index.html
         file_server
     }
 }
