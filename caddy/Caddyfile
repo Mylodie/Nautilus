@@ -10,4 +10,5 @@
         header Upgrade websocket
     }
     reverse_proxy @v2ray_websocket v2ray:23333
+    reverse_proxy {$RPDOMAIN}
 }
