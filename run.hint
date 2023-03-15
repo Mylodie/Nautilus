@@ -1,4 +1,6 @@
-export DOMAIN=
-export WSPATH=
-(modify uuid and path in v2ray/config.json)
+export HTTPPORT [opt]
+export HTTPSPORT [opt]
+export DOMAIN
+export WSPATH
+modify (uuid) and (path) in v2ray/config.json)
 docker-compose up -d
