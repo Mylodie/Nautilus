@@ -1,0 +1,42 @@
+{
+  "inbounds": [
+    {
+      "port": 55555,
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": ""??,
+            "port": ??,
+            "users": [
+              {
+                "id": "",
+                "alterId": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "wsSettings": {
+          "path": "/"??
+        }
+      }
+    }
+  ]
+}
