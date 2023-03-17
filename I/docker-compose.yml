@@ -8,5 +8,5 @@ services:
     volumes:
       - ./v2ray:/etc/v2ray
     ports:
-      - 127.0.0.1:55555:55555
+      - 55555:55555
     entrypoint: v2ray run -config=/etc/v2ray/config.json
