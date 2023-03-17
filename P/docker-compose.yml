@@ -18,9 +18,7 @@ services:
       - ${HTTPPORT:-80}:80
       - ${HTTPSPORT:-443}:443
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./caddy-config:/config
-      - ./caddy-data:/data
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
     environment:
       - DOMAIN=${DOMAIN}
       - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
