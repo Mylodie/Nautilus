@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    environment:
+      WEBSOCKET_ENABLED: "true"  # Enable WebSocket notifications.
+    volumes:
+      - ./vaultwarden/data:/data
+
+  caddy:
+    image: reverie89/caddy:2-security
+    container_name: caddy
+    restart: always
+    ports:
+      - ${HTTPPORT:-80}:80
+      - ${HTTPSPORT:-443}:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy-config:/config
+      - ./caddy-data:/data
+    environment:
+      - DOMAIN=${DOMAIN}
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+      - LOG_FILE="/data/access.log"
+      

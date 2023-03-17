@@ -1,0 +1,5 @@
+export HTTPPORT [opt]
+export HTTPSPORT [opt]
+export DOMAIN
+docker-compose up -d
+restore ./vaultwarden/data
