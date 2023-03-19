@@ -1,0 +1,2 @@
+config frps.ini
+docker-compose up -d
