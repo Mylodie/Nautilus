@@ -7,4 +7,4 @@ services:
     restart: always
     volumes:
       - ./frps/frps.ini:/etc/frp/frps.ini
-    network_mode: host
+    network_mode: "host"
