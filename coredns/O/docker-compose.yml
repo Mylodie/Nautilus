@@ -6,12 +6,12 @@ services:
     container_name: coredns
     restart: always
     volumes:
-      - ./coredns:/coredns
+      - ./coredns:/coredns/
     command: -conf /coredns/Corefile
   
-  caddy-coredns:
+  caddy:
     image: caddy:2.6-alpine
-    container_name: caddy
+    container_name: caddy-coredns
     restart: always
     environment:
       - DOMAIN=${DOMAIN}
