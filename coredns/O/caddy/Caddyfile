@@ -1,0 +1,10 @@
+{
+    http_port $HTTPPORT
+}
+
+{$DOMAIN} {
+    tls {
+        protocols tls1.2 tls1.3
+    }
+    reverse_proxy coredns:80
+}
