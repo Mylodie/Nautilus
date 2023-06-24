@@ -9,7 +9,7 @@ services:
       - ./coredns:/coredns
     command: -conf /coredns/Corefile
   
-  caddy:
+  caddy-coredns:
     image: caddy:2.6-alpine
     container_name: caddy
     restart: always
