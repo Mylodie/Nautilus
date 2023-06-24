@@ -1,5 +1,7 @@
 # Nautilus
 
+![image-20230624172858547](README.assets/image-20230624172858547.png)
+
 Nautilus is an IaC repository designed to help you easily deploy your services on any server, just like the iconic submarine from the classic novel "Twenty Thousand Leagues Under the Sea". With Nautilus, you can quickly and efficiently deploy your services on different servers, regardless of their location or configuration.
 
 ## Getting Started
