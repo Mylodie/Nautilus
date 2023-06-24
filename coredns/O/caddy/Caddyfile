@@ -1,5 +1,5 @@
 {
-    http_port $HTTPPORT
+    http_port {$HTTPPORT}
 }
 
 {$DOMAIN} {
