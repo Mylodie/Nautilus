@@ -6,8 +6,8 @@ services:
     container_name: coredns
     restart: always
     volumes:
-      - ./coredns:/coredns/
-    command: -conf /coredns/Corefile
+      - ./coredns:/etc/coredns
+    command: -conf /etc/coredns/Corefile
   
   caddy:
     image: caddy:2.6-alpine
