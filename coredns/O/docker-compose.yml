@@ -15,6 +15,7 @@ services:
     restart: always
     environment:
       - DOMAIN=${DOMAIN}
+      - HTTPPORT=${HTTPPORT:-80}
     ports:
       - ${HTTPPORT:-80}:80
       - ${HTTPSPORT:-443}:443
