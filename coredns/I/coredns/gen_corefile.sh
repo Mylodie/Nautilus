@@ -5,7 +5,7 @@ china=`curl -sSL https://github.com/felixonmars/dnsmasq-china-list/raw/master/ac
 apple=`curl -sSL https://github.com/felixonmars/dnsmasq-china-list/raw/master/apple.china.conf | while read line; do awk -F '/' '{print $2}' | grep -v '#' ; done |  paste -sd " " -`
 google=`curl -sSL https://github.com/felixonmars/dnsmasq-china-list/raw/master/google.china.conf | while read line; do awk -F '/' '{print $2}' | grep -v '#' ; done |  paste -sd " " -`
 cat>Corefile<<EOF
-. {
+.:53 {
     ads {
        default-lists
        blacklist https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt

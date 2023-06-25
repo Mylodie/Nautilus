@@ -1,4 +1,4 @@
-. {
+.:53 {
     ads {
        default-lists
        blacklist https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
