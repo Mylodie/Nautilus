@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  agh:
+    image: adguard/adguardhome
+    container_name: agh
+    restart: always
+    volumes:
+      - ./work:opt/adguardhome/work
+      - ./conf:opt/adguardhome/conf
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 8081:80
