@@ -3,4 +3,9 @@ export HTTPSPORT [opt]
 export DOMAIN
 export WSPATH
 config v2ray/config.json
+
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $HTTPPORT
+
 docker-compose up -d
+
+iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $HTTPPORT

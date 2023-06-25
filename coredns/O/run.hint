@@ -1,4 +1,9 @@
 export HTTPPORT [opt]
 export HTTPSPORT [opt]
 export DOMAIN
+
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $HTTPPORT
+
 docker-compose up -d
+
+iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $HTTPPORT

@@ -1,7 +1,3 @@
-{
-    http_port {$HTTPPORT}
-}
-
 {$DOMAIN} {
     tls {
         protocols tls1.2 tls1.3

@@ -15,7 +15,6 @@ services:
     restart: always
     environment:
       - DOMAIN=${DOMAIN}
-      - HTTPPORT=${HTTPPORT:-80}
       - WSPATH=${WSPATH}
     ports:
       - ${HTTPPORT:-80}:80
