@@ -6,10 +6,19 @@ services:
     container_name: agh
     restart: always
     volumes:
-      - ./work:/opt/adguardhome/work
-      - ./conf:/opt/adguardhome/conf
+      - ./agh/work:/opt/adguardhome/work
+      - ./agh/conf:/opt/adguardhome/conf
     ports:
       - 53:53/tcp
       - 53:53/udp
       - 8081:80
       - 8082:3000
+  coredns:
+    image: coredns/coredns:1.10.0
+    container_name: coredns
+    restart: always
+    volumes:
+      - ./coredns:/etc/coredns
+    command: -conf /etc/coredns/Corefile
+
+  
