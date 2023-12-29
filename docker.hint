@@ -1,0 +1,23 @@
+cd /etc/docker
+vim daemon.json
+
+{
+    "registry-mirrors" : [
+        "https://registry.docker-cn.com",
+        "http://hub-mirror.c.163.com",
+        "https://docker.mirrors.ustc.edu.cn",
+        "https://cr.console.aliyun.com",
+        "https://mirror.ccs.tencentyun.com"
+    ],
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
+    }
+}
+
+systemctl daemon-reload
+systemctl restart docker.service
+docker info
+
+docker-compose -d -f /path/to/docker-compose.yml up service1 service2 

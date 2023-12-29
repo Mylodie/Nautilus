@@ -1,0 +1,21 @@
+services:
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    volumes:
+        - ./data:/data
+        - ./letsencrypt:/etc/letsencrypt
+    ports:
+        - '127.0.0.1:81:81'
+        - '23443:443'
+    networks:
+        - npm_network
+
+# networks:
+#   npm_network:
+#     name: npm_network
+
+healthcheck:
+  test: ["CMD", "/bin/check-health"]
+  interval: 30s
+  timeout: 3s
