@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   derp:
     build: .
@@ -8,9 +8,9 @@ services:
     volumes:
       - "/var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock"
     networks:
-      - npm_network
+      - npm_default
 
 networks:
-  npm_network:
+  npm_default:
     external: true
-    name: npm_network
+    name: npm_default
