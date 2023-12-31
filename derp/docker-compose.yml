@@ -10,7 +10,7 @@ services:
     networks:
       - npm_network
 
-# networks:
-#   npm_network:
-#     external: true
-#     name: npm_network
+networks:
+  npm_network:
+    external: true
+    name: npm_network
