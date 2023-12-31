@@ -13,4 +13,3 @@ services:
 networks:
   npm_default:
     external: true
-    name: npm_default
