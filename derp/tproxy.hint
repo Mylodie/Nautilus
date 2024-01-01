@@ -1,0 +1,24 @@
+ip rule add fwmark 1 table 100
+ip route add local 0.0.0.0/0 dev lo table 100
+
+ipset create extraterritorial_ipranges hash:net
+IFS=',' read -ra ipranges <<< $(cat extraterritorial_ipranges.txt)
+for iprange in "${ipranges[@]}"; do
+    ipset add extraterritorial_ipranges $iprange
+done
+
+
+# 代理外部设备
+iptables -t mangle -N RAY_PREROUTING
+iptables -t mangle -A RAY_PREROUTING  -m set ! --match-set extraterritorial_ipranges dst -j RETURN
+iptables -t mangle -A RAY_PREROUTING -p udp -j TPROXY --on-port 23333 --tproxy-mark 1 # 给 UDP 打标记 1，转发至 23333 端口
+iptables -t mangle -A RAY_PREROUTING -p tcp -j TPROXY --on-port 23333 --tproxy-mark 1 # 给 TCP 打标记 1，转发至 23333 端口
+iptables -t mangle -A PREROUTING -j RAY_PREROUTING # 应用规则
+
+# 代理本机
+iptables -t mangle -N RAY_OUTPUT
+iptables -t mangle -A RAY_OUTPUT -m set ! --match-set extraterritorial_ipranges dst -j RETURN
+iptables -t mangle -A RAY_OUTPUT -j RETURN -m mark --mark 0xff # 处理过的不再重定向，防止成环
+iptables -t mangle -A RAY_OUTPUT -p udp -j MARK --set-mark 1   # 给 UDP 打标记,重路由
+iptables -t mangle -A RAY_OUTPUT -p tcp -j MARK --set-mark 1   # 给 TCP 打标记，重路由
+iptables -t mangle -A OUTPUT -j RAY_OUTPUT # 应用规则

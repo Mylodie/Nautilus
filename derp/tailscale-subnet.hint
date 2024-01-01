@@ -1,0 +1,1 @@
+tailscale up --advertise-exit-node --advertise-routes=$(cat extraterritorial_ipranges.txt)
