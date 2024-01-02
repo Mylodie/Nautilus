@@ -11,7 +11,9 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - ${HTTPPORT:-80}:80
+    networks:
+      - npm_default
+      
   coredns:
     image: coredns/coredns:1.10.0
     container_name: coredns
@@ -19,5 +21,9 @@ services:
     volumes:
       - ./coredns:/etc/coredns
     command: -conf /etc/coredns/Corefile
+    networks:
+      - npm_default
 
-  
+networks:
+  npm_default:
+    external: true
