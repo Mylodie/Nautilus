@@ -15,6 +15,7 @@ iptables -t mangle -A RAY_PREROUTING -p udp -j TPROXY --on-port 23333 --tproxy-m
 iptables -t mangle -A RAY_PREROUTING -p tcp -j TPROXY --on-port 23333 --tproxy-mark 1 # 给 TCP 打标记 1，转发至 23333 端口
 iptables -t mangle -A PREROUTING -j RAY_PREROUTING # 应用规则
 
+
 # 代理本机
 iptables -t mangle -N RAY_OUTPUT
 iptables -t mangle -A RAY_OUTPUT -m set ! --match-set extraterritorial_ipranges dst -j RETURN
