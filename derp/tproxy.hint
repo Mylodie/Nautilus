@@ -3,7 +3,7 @@ ip route add local 0.0.0.0/0 dev lo table 100
 
 ipset create ex_ipranges hash:net
 while IFS= read -r iprange; do
-    ipset add $ex_ipranges $iprange
+    ipset add ex_ipranges $iprange
 done < ex_ipranges.txt
 
 RAY_DIP=$(docker container inspect v2ray --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}')
