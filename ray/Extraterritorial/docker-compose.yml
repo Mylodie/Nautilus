@@ -9,9 +9,9 @@ services:
       - ./v2ray:/etc/v2ray
     entrypoint: v2ray run -config=/etc/v2ray/config.json
   
-  v2ray-caddy:
+  caddy:
     image: caddy:2.6-alpine
-    container_name: caddy
+    container_name: v2ray-caddy
     restart: always
     environment:
       - DOMAIN=${DOMAIN}
