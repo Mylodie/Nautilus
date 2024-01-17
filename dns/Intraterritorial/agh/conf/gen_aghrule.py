@@ -2,7 +2,7 @@
 
 import urllib.request
 
-import idna
+# import idna
 
 import os
 
@@ -21,7 +21,8 @@ with urllib.request.urlopen(url) as response:
     file_contents = response.read()
     for line in file_contents.splitlines():
         domain = line.decode('utf-8').split("/")[1]
-        punycode = idna.encode(domain).decode("utf-8")
+        # punycode = idna.encode(domain).decode("utf-8")
+        punycode = domain
         agh_rule= "[/{}/]{}".format(punycode, dns_server_cn)
         agh_rules.append(agh_rule)
 

@@ -1,0 +1,2 @@
+export DNS_SERVER_FALLBACK=https://host:port/dns-query
+export DNS_SERVER_CN=192.168.233.32
