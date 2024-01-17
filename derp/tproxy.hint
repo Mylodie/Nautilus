@@ -1,4 +1,4 @@
-ip rule add fwmark 1 table 100
+ip rule add fwmark 0x1/0xff table 100
 ip route add local 0.0.0.0/0 dev lo table 100
 
 ipset create ex_ipranges hash:net
@@ -12,8 +12,9 @@ RAY_DIP=$(docker container inspect v2ray --format='{{range .NetworkSettings.Netw
 iptables -t mangle -N RAY_PREROUTING
 iptables -t mangle -A RAY_PREROUTING -s $RAY_DIP -j RETURN
 iptables -t mangle -A RAY_PREROUTING -m set ! --match-set ex_ipranges dst -j RETURN
-iptables -t mangle -A RAY_PREROUTING -p udp -j TPROXY --on-port 23333 --tproxy-mark 1 # 给 UDP 打标记 1，转发至 23333 端口
-iptables -t mangle -A RAY_PREROUTING -p tcp -j TPROXY --on-port 23333 --tproxy-mark 1 # 给 TCP 打标记 1，转发至 23333 端口
+iptables -t mangle -A RAY_PREROUTING  -j LOG --log-prefix "RAY_MARK_PREROUTING_TEST"
+iptables -t mangle -A RAY_PREROUTING -p udp -j TPROXY --on-port 23333 --tproxy-mark 0x1/0xff # 给 UDP 打标记 1，转发至 23333 端口
+iptables -t mangle -A RAY_PREROUTING -p tcp -j TPROXY --on-port 23333 --tproxy-mark 0x1/0xff # 给 TCP 打标记 1，转发至 23333 端口
 iptables -t mangle -A PREROUTING -j RAY_PREROUTING # 应用规则
 
 

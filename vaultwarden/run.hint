@@ -4,3 +4,5 @@ export DOMAIN
 export CLOUDFLARE_API_TOKEN
 docker-compose up -d
 restore ./vaultwarden/data
+
+$ docker run --rm -it -v $(pwd)/config:/config -v /path/to/source:/source -e SYNC_SRC="/source" -e SYNC_DEST="dest:path" -e TZ="America/Argentina/Buenos_Aires" -e CRON="0 0 * * *" -e CRON_ABORT="0 6 * * *" -e FORCE_SYNC=1 -e CHECK_URL=https://hchk.io/hchk_uuid bcardiff/rclone

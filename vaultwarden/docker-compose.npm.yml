@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    environment:
+      WEBSOCKET_ENABLED: "true"  # Enable WebSocket notifications.
+    volumes:
+      - ./vaultwarden/data:/data
+    networks:
+        npm_default:
+          ipv4_address: 192.168.233.41
+      
+networks:
+  npm_default:
+    external: true
