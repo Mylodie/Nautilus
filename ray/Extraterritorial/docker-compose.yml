@@ -9,7 +9,7 @@ services:
       - ./v2ray:/etc/v2ray
     entrypoint: v2ray run -config=/etc/v2ray/config.json
   
-  caddy:
+  v2ray-caddy:
     image: caddy:2.6-alpine
     container_name: caddy
     restart: always
