@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  coredns:
+    image: coredns/coredns:1.10.0
+    container_name: coredns
+    restart: always
+    volumes:
+      - ./coredns:/etc/coredns
+    networks:
+        npm_default:
+          ipv4_address: 192.168.233.33
+    command: -conf /etc/coredns/Corefile

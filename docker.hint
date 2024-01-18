@@ -11,7 +11,7 @@ vim daemon.json
     ],
     "log-driver": "json-file",
     "log-opts": {
-        "max-size": "10m",
+        "max-size": "5m",
         "max-file": "3"
     }
 }

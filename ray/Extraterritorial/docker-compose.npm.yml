@@ -7,19 +7,24 @@ services:
     restart: always
     volumes:
       - ./v2ray:/etc/v2ray
+    networks:
+        npm_default:
+          ipv4_address: 192.168.233.41
     entrypoint: v2ray run -config=/etc/v2ray/config.json
   
-  caddy:
+  v2ray-caddy:
     image: caddy:2.6-alpine
     container_name: v2ray-caddy
     restart: always
-    environment:
-      - DOMAIN=${DOMAIN}
-      - WSPATH=${WSPATH}
-    ports:
-      - ${HTTPPORT:-80}:80
-      - ${HTTPSPORT:-443}:443
     volumes:
       - ./caddy/Caddyfile:/Caddyfile:ro
       - ./caddy/index.html:/site/index.html
+    networks:
+        npm_default:
+          ipv4_address: 192.168.233.42
     entrypoint: [caddy,run,--config,/Caddyfile]
+
+
+networks:
+  npm_default:
+    external: true

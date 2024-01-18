@@ -1,0 +1,19 @@
+192.168.233.0/24
+
+npm
+    npm 192.168.233.11
+
+derp
+    derp 192.168.233.21
+
+dns
+    Interterritorial
+        agh 192.168.233.31
+        coredns 192.168.233.32
+    Extraterritorial
+        coredns 192.168.233.33
+
+ray
+    Extraterritorial
+        ray 192.168.233.41
+        caddy ray 192.168.233.42
