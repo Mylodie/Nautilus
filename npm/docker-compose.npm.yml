@@ -9,6 +9,7 @@ services:
         - ./letsencrypt:/etc/letsencrypt
     ports:
         - '127.0.0.1:81:81'
+        - '80:80'
         - '23443:443'
     networks:
         default:
