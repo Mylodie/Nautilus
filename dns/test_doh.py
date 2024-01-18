@@ -75,4 +75,7 @@ def dns_over_https(server, query):
     conn.close()
 
 if __name__ == "__main__":
-    dns_over_https(sys.argv[1], sys.argv[2])
+    if len(sys.argv) != 3:
+        print("Usage: python test_doh.py https://host:port/dns-query google.com")
+    else:
+        dns_over_https(sys.argv[1], sys.argv[2])
