@@ -11,3 +11,7 @@ services:
         npm_default:
           ipv4_address: 192.168.233.33
     command: -conf /etc/coredns/Corefile
+
+networks:
+  npm_default:
+    external: true
