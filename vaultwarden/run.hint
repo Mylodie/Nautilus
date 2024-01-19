@@ -11,6 +11,6 @@ docker run --rm -it \
   rclone config show
 
 export RCLONE_REMOTE_NAME
-export RCLONE_REMOTE_DIR=/bucket
+export RCLONE_REMOTE_DIR=/bucket/
 
 docker-compose -f docker-compose.npm.yml up -d

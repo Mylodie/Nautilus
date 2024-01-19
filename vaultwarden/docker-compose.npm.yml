@@ -21,7 +21,7 @@ services:
     restart: always
     environment:
       RCLONE_REMOTE_NAME: '${RCLONE_REMOTE_NAME:-BitwardenBackup}'
-      RCLONE_REMOTE_DIR: '${RCLONE_REMOTE_DIR/:-/BitwardenBackup/}'
+      RCLONE_REMOTE_DIR: '${RCLONE_REMOTE_DIR:-/BitwardenBackup/}'
     #   RCLONE_GLOBAL_FLAG: ''
       CRON: '0 2 * * *'
     #   ZIP_ENABLE: 'TRUE'
