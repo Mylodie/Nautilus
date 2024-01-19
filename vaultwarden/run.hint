@@ -1,8 +1,16 @@
-export HTTPPORT [opt]
-export HTTPSPORT [opt]
-export DOMAIN
-export CLOUDFLARE_API_TOKEN
-docker-compose up -d
-restore ./vaultwarden/data
+# config rclone 
+docker run --rm -it \
+  --mount type=volume,source=vaultwarden-rclone-data,target=/config/ \
+  ttionya/vaultwarden-backup:latest \
+  rclone config
 
-$ docker run --rm -it -v $(pwd)/config:/config -v /path/to/source:/source -e SYNC_SRC="/source" -e SYNC_DEST="dest:path" -e TZ="America/Argentina/Buenos_Aires" -e CRON="0 0 * * *" -e CRON_ABORT="0 6 * * *" -e FORCE_SYNC=1 -e CHECK_URL=https://hchk.io/hchk_uuid bcardiff/rclone
+# show config
+docker run --rm -it \
+  --mount type=volume,source=vaultwarden-rclone-data,target=/config/ \
+  ttionya/vaultwarden-backup:latest \
+  rclone config show
+
+export RCLONE_REMOTE_NAME
+export RCLONE_REMOTE_DIR=/bucket
+
+docker-compose -f docker-compose.npm.yml up -d

@@ -17,3 +17,7 @@ ray
     Extraterritorial
         ray 192.168.233.41
         caddy ray 192.168.233.42
+
+vualtwarden
+    vualtwarden 192.168.233.51
+    vualtwarden-backup 192.168.233.52
