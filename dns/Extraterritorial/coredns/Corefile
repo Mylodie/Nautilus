@@ -2,5 +2,7 @@
 # you can also start DNS server serving DoH without TLS termination (plain HTTP)
 https://.:80 {
     forward . 8.8.8.8 8.8.4.4
+    cache
+    reload
     log
 }
